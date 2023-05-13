@@ -23,8 +23,8 @@ end
 
 local Config = {
   mode = 'background',
-  switch_to_light = toggle_background,
-  switch_to_dark = toggle_background
+  light_mode_callback = toggle_background,
+  dark_mode_callback = toggle_background,
 }
 
 local function set_colorscheme_callbacks()
