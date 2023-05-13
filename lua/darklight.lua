@@ -1,5 +1,6 @@
 local M = {}
 
+-- utilities
 local function merge(t1, t2)
     for k, v in pairs(t2) do
         if (type(v) == "table") and (type(t1[k] or false) == "table") then
@@ -59,9 +60,10 @@ local function validate_config(config)
   end
 end
 
+-- Public API
+
 M.color_switch = function()
   local currentColor = vim.go.background
-  print(currentColor)
   if currentColor == 'dark' then
     Config.light_mode_callback()
   else
@@ -76,22 +78,6 @@ M.setup = function(config)
   else
     return
   end
-end
-
-M.my_setup = function() 
-  M.setup({
-      mode = 'colorscheme',
-      light_mode_colorscheme = 'shine',
-      dark_mode_colorscheme = 'elflord',
-      light_mode_callback = function()
-        require('material.functions').change_style("lighter")
-        vim.go.background = 'light'
-      end,
-      dark_mode_callback = function()
-        require('material.functions').change_style("palenight")
-        vim.go.background = 'dark'
-      end
-    })
 end
 
 return M
