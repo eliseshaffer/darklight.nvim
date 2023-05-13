@@ -1,6 +1,5 @@
 <div align="center">
 
-
 ##  darklight.nvim
 A dark mode / light mode switcher for Neovim.
 
@@ -8,6 +7,12 @@ A dark mode / light mode switcher for Neovim.
 
 ## Installation
 
+Install using your favorite neovim package manager:
+
+### Packer
+```lua
+use { 'eliseshaffer/darklight.nvim' }
+```
 
 ## Setup
 
@@ -27,5 +32,5 @@ require('darklight').setup({
 
 ## Fallbacks
 
-This plugin will fallback gracefully to "background" mode if the configuration is not correct for
+Darklight will fallback gracefully to "background" mode if the configuration is not correct for
 the other modes.
