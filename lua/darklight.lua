@@ -26,6 +26,17 @@ local Config = {
   switch_to_dark = toggle_background
 }
 
+local function set_colorscheme_callbacks()
+  if Config.mode == 'colorscheme' then
+    Config.light_mode_callback = function() 
+      vim.api.nvim_exec("colorscheme " .. Config.light_mode_colorscheme, false)
+    end
+    Config.dark_mode_callback = function() 
+      vim.api.nvim_exec("colorscheme " .. Config.dark_mode_colorscheme, false)
+    end
+  end
+end
+
 local function validate_config(config)
   if config.mode == 'background' then
     return true
@@ -35,12 +46,6 @@ local function validate_config(config)
     end
     if config.dark_mode_colorscheme == nil then
       error("DarkLight: option dark_mode_colorscheme is required for colorscheme mode\nFalling back to background mode")
-    end
-    config.light_mode_callback = function() 
-      vim.api.nvim_exec("colorscheme " .. Config.light_mode_colorscheme, false)
-    end
-    config.dark_mode_callback = function() 
-      vim.api.nvim_exec("colorscheme " .. Config.dark_mode_colorscheme, false)
     end
   elseif config.mode == 'custom' then
     if config.light_mode_callback == nil then
@@ -67,6 +72,7 @@ end
 M.setup = function(config)
   if pcall(function() validate_config(config) end)then 
     merge(Config, config)
+    set_colorscheme_callbacks()
   else
     return
   end
