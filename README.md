@@ -107,7 +107,7 @@ You can also map to a keymap for quick access. Here's an example of how to do th
 
 ```lua
 local key = vim.api.nvim_set_keymap
-key('n', '<leader>dl', ":lua require('darklight').color_switch()<CR>", { noremap = true})
+key('n', '<leader>dl', ":lua require('darklight').color_switch()<CR>", { noremap = true })
 ```
 
 ## Notes
