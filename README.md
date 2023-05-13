@@ -23,6 +23,13 @@ In background mode, darklight will only change the vim background. This is
 useful if you use a colorscheme with different color palettes based on the
 vim background.
 
+This is the default mode and requires you to only call the setup function:
+
+```lua
+require('darklight').setup()
+```
+
+
 ### colorscheme
 In colorscheme mode, Darklight switches between the colorschemes provided
 in the `light_mode_colorscheme` and `dark_mode_colorscheme` options. Both
