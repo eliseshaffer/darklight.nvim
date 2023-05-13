@@ -95,7 +95,23 @@ require('darklight').setup({
 In this example, [material.nvim](https://github.com/marko-cerovac/material.nvim) provides it own style switching and
 I call those functions from within my callbacks.
 
-## Fallbacks
+## Usage
+
+To use Daylight, call the `color_switch` function to switch between dark and light mode: 
+
+```lua
+require('daylight').color_switch()
+```
+
+You can also map to a keymap for quick access. Here's an example of how to do that:
+
+```lua
+local key = vim.api.nvim_set_keymap
+key('n', '<leader>dl', ":lua require('darklight').color_switch()<CR>", { noremap = true})
+```
+
+## Notes
 
 Darklight will fallback gracefully to "background" mode if the configuration is not correct for
 the other modes.
+
