@@ -12,19 +12,8 @@ local function merge(t1, t2)
     return t1
 end
 
-local function toggle_background()
-  local currentColor = vim.go.background
-  if currentColor == 'dark' then 
-    vim.go.background = 'light'
-  else
-    vim.go.background = 'dark'
-  end
-end
-
 local Config = {
   mode = 'background',
-  light_mode_callback = toggle_background,
-  dark_mode_callback = toggle_background,
 }
 
 local function set_colorscheme_callbacks()
@@ -66,8 +55,10 @@ M.color_switch = function()
   local currentColor = vim.go.background
   if currentColor == 'dark' then
     Config.light_mode_callback()
+    vim.go.background = 'light'
   else
     Config.dark_mode_callback()
+    vim.go.background = 'dark'
   end
 end
 

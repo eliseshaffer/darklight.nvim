@@ -32,14 +32,10 @@ require('darklight').setup()
 
 ### colorscheme
 In colorscheme mode, Darklight switches between the colorschemes provided
-in the `light_mode_colorscheme` and `dark_mode_colorscheme` options. Both
-options are required in this mode.
+in the `light_mode_colorscheme` and `dark_mode_colorscheme` options. 
 
-> :warning: This mode assumes that each colorscheme sets the vim background
-> appropriately. It DOES NOT set the vim background itself. If your colorscheme
-> doesn't set the vim background, you'll have to use custom mode and
-> change the colorscheme and manually set `vim.go.background` in each
-> callback
+In this mode, `light_mode_colorscheme` and `dark_mode_colorscheme` are
+REQUIRED.
 
 ```lua
 require('darklight').setup({
@@ -49,6 +45,11 @@ require('darklight').setup({
 })
 ```
 
+> :warning: Darklight uses `vim.go.background` to know what mode you are
+> currently in. Because of this, it sets the background to `"light"` and
+> `"dark"` in each callback. This may cause issues if you use a two dark
+> or two light colorschemes with Darklight.
+
 ### custom
 Custom mode allows you to completely control what happens when you switch
 modes by letting you supply callback functions to call when switching.
@@ -56,22 +57,16 @@ This mode is most useful if you use a theme that provides its own
 switching functionality or if you need to set multiple themes(e.g. if you
 use airline and need to set the airline theme as well. 
 
-In this mode `light_mode_callback` and `dark_mode_callback` are required.
+In this mode `light_mode_callback` and `dark_mode_callback` are REQUIRED.
 
-> :warning: Darklight uses the vim background to know which mode you're
-> currently in. Because of this, your callbacks MUST set `vim.go.background`
-> to `"dark"` or `"light"` appropriately. This is something I might
-> improve in the future.
 ```lua
 require('darklight').setup({
   mode = 'custom', -- Sets darklight to custom mode
   light_mode_callback = function() -- Function to call to set light mode
     ... -- your light mode switch code goes here
-    vim.go.background = 'light'
   end,
   dark_mode_callback = function() -- Function to call to set dark mode
     ... -- your dark mode switch code goes here
-    vim.go.background = 'dark'
   end,
 })
 ```
@@ -83,11 +78,9 @@ require('darklight').setup({
   mode = 'custom',
   light_mode_callback = function()
     require('material.functions').change_style("lighter") 
-    vim.go.background = 'light'
   end,
   dark_mode_callback = function()
     require('material.functions').change_style("palenight")
-    vim.go.background = 'dark'
   end
 })
 ```
