@@ -23,7 +23,7 @@ In background mode, darklight will only change the vim background. This is
 useful if you use a colorscheme with different color palettes based on the
 vim background.
 
-This is the default mode and requires you to only call the setup function:
+This is the default mode and requires no arguments to the setup function:
 
 ```lua
 require('darklight').setup()
@@ -55,7 +55,8 @@ Custom mode allows you to completely control what happens when you switch
 modes by letting you supply callback functions to call when switching.
 This mode is most useful if you use a theme that provides its own
 switching functionality or if you need to set multiple themes(e.g. if you
-use airline and need to set the airline theme as well. 
+use a statusline plugin that manages its own themes and need to set 
+that as well.)
 
 In this mode `light_mode_callback` and `dark_mode_callback` are REQUIRED.
 
@@ -90,10 +91,10 @@ I call those functions from within my callbacks.
 
 ## Usage
 
-To use Daylight, call the `color_switch` function to switch between dark and light mode: 
+To use Darklight, call the `color_switch` function to switch between dark and light mode: 
 
 ```lua
-require('daylight').color_switch()
+require('darklight').color_switch()
 ```
 
 You can also map to a keymap for quick access. Here's an example of how to do that:
