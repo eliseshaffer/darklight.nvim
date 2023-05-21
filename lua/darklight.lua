@@ -14,6 +14,8 @@ end
 
 local Config = {
   mode = 'background',
+  dark_mode_callback = function() end,
+  light_mode_callback = function() end,
 }
 
 local function set_colorscheme_callbacks()
