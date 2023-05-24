@@ -2,14 +2,14 @@ local M = {}
 
 -- utilities
 local function merge(t1, t2)
-    for k, v in pairs(t2) do
-        if (type(v) == "table") and (type(t1[k] or false) == "table") then
-            merge(t1[k], t2[k])
-        else
-            t1[k] = v
-        end
+  for k, v in pairs(t2) do
+    if (type(v) == "table") and (type(t1[k] or false) == "table") then
+      merge(t1[k], t2[k])
+    else
+      t1[k] = v
     end
-    return t1
+  end
+  return t1
 end
 
 local Config = {
@@ -20,10 +20,10 @@ local Config = {
 
 local function set_colorscheme_callbacks()
   if Config.mode == 'colorscheme' then
-    Config.light_mode_callback = function() 
+    Config.light_mode_callback = function()
       vim.api.nvim_exec("colorscheme " .. Config.light_mode_colorscheme, false)
     end
-    Config.dark_mode_callback = function() 
+    Config.dark_mode_callback = function()
       vim.api.nvim_exec("colorscheme " .. Config.dark_mode_colorscheme, false)
     end
   end
@@ -65,7 +65,7 @@ M.color_switch = function()
 end
 
 M.setup = function(config)
-  if pcall(function() validate_config(config) end)then 
+  if pcall(function() validate_config(config) end) then
     merge(Config, config)
     set_colorscheme_callbacks()
   else
