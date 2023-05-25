@@ -68,9 +68,11 @@ M.setup = function(config)
   if pcall(function() validate_config(config) end) then
     merge(Config, config)
     set_colorscheme_callbacks()
-  else
-    return
   end
+
+  local user_create_cmd = vim.api.nvim_create_user_command
+
+  user_create_cmd("DarkLightSwitch", function() M.color_switch() end, { desc = "Switch between dark mode and light mode" })
 end
 
 return M

@@ -91,17 +91,17 @@ I call those functions from within my callbacks.
 
 ## Usage
 
-To use Darklight, call the `color_switch` function to switch between dark and light mode: 
+Use the `DarkLightSwitch` command to switch between dark and light mode: 
 
-```lua
-require('darklight').color_switch()
+```
+:DarkLightSwitch
 ```
 
 You can also map to a keymap for quick access. Here's an example of how to do that:
 
 ```lua
 local key = vim.api.nvim_set_keymap
-key('n', '<leader>dl', ":lua require('darklight').color_switch()<CR>", { noremap = true })
+key('n', '<leader>dl', ":DarkLightSwitch<CR>", { noremap = true })
 ```
 
 ## Notes
