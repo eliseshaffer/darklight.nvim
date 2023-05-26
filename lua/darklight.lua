@@ -52,6 +52,27 @@ local function validate_config(config)
   end
 end
 
+function tprint (tbl, indent)
+  if not indent then indent = 0 end
+  for k, v in pairs(tbl) do
+    formatting = string.rep("  ", indent) .. k .. ": "
+    if type(v) == "table" then
+      print(formatting)
+      tprint(v, indent+1)
+    elseif type(v) == 'boolean' then
+      print(formatting .. tostring(v))      
+    else
+      print(formatting .. v)
+    end
+  end
+end
+
+local function set_color_from_environment()
+  tprint(vim.tbl_keys(vim.env))
+  -- print(vim.env)
+  vim.go.background = vim.env.COLOR
+end
+
 -- Public API
 
 M.color_switch = function()
@@ -73,7 +94,8 @@ M.setup = function(config)
 
   print("setup 1: " .. vim.env.COLOR)
 
-  Config.startup_callback()
+  -- Config.startup_callback()
+  set_color_from_environment()
 
   local user_create_cmd = vim.api.nvim_create_user_command
 
