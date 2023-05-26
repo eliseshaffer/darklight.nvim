@@ -16,6 +16,7 @@ local Config = {
   mode = 'background',
   dark_mode_callback = function() end,
   light_mode_callback = function() end,
+  startup_callback = function() end,
 }
 
 local function set_colorscheme_callbacks()
@@ -69,6 +70,10 @@ M.setup = function(config)
     merge(Config, config)
     set_colorscheme_callbacks()
   end
+
+  print("setup 1: " .. vim.env.COLOR)
+
+  Config.startup_callback()
 
   local user_create_cmd = vim.api.nvim_create_user_command
 
