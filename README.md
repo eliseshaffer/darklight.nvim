@@ -47,7 +47,7 @@ require('darklight').setup({
 
 > :warning: Darklight uses `vim.go.background` to know what mode you are
 > currently in. Because of this, it sets the background to `"light"` and
-> `"dark"` in each callback. This may cause issues if you use a two dark
+> `"dark"` after each callback. This may cause issues if you use two dark
 > or two light colorschemes with Darklight.
 
 ### custom
