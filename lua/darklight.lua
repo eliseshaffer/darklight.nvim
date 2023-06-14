@@ -21,10 +21,10 @@ local Config = {
 local function set_colorscheme_callbacks()
   if Config.mode == 'colorscheme' then
     Config.light_mode_callback = function()
-      vim.api.nvim_exec("colorscheme " .. Config.light_mode_colorscheme, false)
+      vim.cmd({cmd = 'colorscheme', args = { Config.light_mode_colorscheme } } )
     end
     Config.dark_mode_callback = function()
-      vim.api.nvim_exec("colorscheme " .. Config.dark_mode_colorscheme, false)
+      vim.cmd({cmd = 'colorscheme', args = { Config.dark_mode_colorscheme } } )
     end
   end
 end
