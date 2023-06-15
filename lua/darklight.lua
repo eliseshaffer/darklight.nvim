@@ -53,4 +53,8 @@ M.setup = function(config)
     { desc = "Switch between dark mode and light mode" })
 end
 
+M.update = function(config)
+  Config.load(config)
+end
+
 return M
