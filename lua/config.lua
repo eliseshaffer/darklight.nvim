@@ -22,20 +22,20 @@ local function validate_config(config)
     return true
   elseif config.mode == 'colorscheme' then
     if config.light_mode_colorscheme == nil then
-      error("DarkLight: option light_mode_colorscheme is required for colorscheme mode\nFalling back to background mode")
+      error("DarkLight: option light_mode_colorscheme is required for colorscheme mode")
     end
     if config.dark_mode_colorscheme == nil then
-      error("DarkLight: option dark_mode_colorscheme is required for colorscheme mode\nFalling back to background mode")
+      error("DarkLight: option dark_mode_colorscheme is required for colorscheme mode")
     end
   elseif config.mode == 'custom' then
     if config.light_mode_callback == nil then
-      error("DarkLight: option light_mode_callback is required for custom mode\nFalling back to background mode")
+      error("DarkLight: option light_mode_callback is required for custom mode")
     end
     if config.dark_mode_callback == nil then
-      error("DarkLight: option dark_mode_callback is required for custom mode\nFalling back to background mode")
+      error("DarkLight: option dark_mode_callback is required for custom mode")
     end
   else
-    error("DarkLight: invalid option `mode`; Falling back to background mode")
+    error("DarkLight: invalid option `mode`")
   end
 end
 
