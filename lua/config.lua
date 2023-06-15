@@ -39,21 +39,9 @@ local function validate_config(config)
   end
 end
 
-local function set_colorscheme_callbacks()
-  if Config.mode == 'colorscheme' then
-    Config.light_mode_callback = function()
-      vim.cmd({cmd = 'colorscheme', args = { Config.light_mode_colorscheme } } )
-    end
-    Config.dark_mode_callback = function()
-      vim.cmd({cmd = 'colorscheme', args = { Config.dark_mode_colorscheme } } )
-    end
-  end
-end
-
 M.load = function(new_config)
   if pcall(function() validate_config(new_config) end) then
     merge(Config, new_config)
-    set_colorscheme_callbacks()
   end
 end
 
