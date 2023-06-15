@@ -91,6 +91,8 @@ I call those functions from within my callbacks.
 
 ## Usage
 
+### Switching between modes
+
 Use the `DarkLightSwitch` command to switch between dark and light mode: 
 
 ```
@@ -103,6 +105,26 @@ You can also map to a keymap for quick access. Here's an example of how to do th
 local key = vim.api.nvim_set_keymap
 key('n', '<leader>dl', ":DarkLightSwitch<CR>", { noremap = true })
 ```
+
+### Updating configuration
+
+You can update the configuration by calling the `update()` function and
+passing a new configuration. 
+
+```lua
+require('darklight').update({
+  mode = 'colorscheme', -- Sets darklight to colorscheme mode
+  light_mode_colorscheme = 'shine', -- Sets the colorscheme to use for light mode
+  dark_mode_colorscheme = 'elflord', -- Sets the colorscheme to use for dark mode
+})
+```
+
+If there are any validation errors, Darklight will fall back to the
+previous configuration.
+
+> :warning: This will only work if you have called setup. Calling this function by
+> itself will not create the commands and Darklight will be unable to switch
+> between modes. 
 
 ## Notes
 
