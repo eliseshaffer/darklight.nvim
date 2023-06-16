@@ -1,5 +1,5 @@
 local M = {}
-local Config = require('config')
+local Config = require('darklight.config')
 
 local function switch_colorscheme_if_needed(current_background)
   local current_config = Config.current()
